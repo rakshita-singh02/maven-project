@@ -5,8 +5,8 @@ stage "SCM Checkout"{
 git 'https://github.com/Akshaydwagh/maven-project'
 }
 
-stage "code test"{
+stage "code compile"{
 withMaven(maven: 'MyMaven') {
-}sh 'mvn test'
+}sh 'mvn compile'
 }
 }
