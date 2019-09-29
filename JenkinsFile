@@ -1,5 +1,8 @@
 pipeline {
      agent any
+     
+ stages
+ {
 
 stage "SCM Checkout"{
 git 'https://github.com/Akshaydwagh/maven-project'
@@ -8,5 +11,6 @@ git 'https://github.com/Akshaydwagh/maven-project'
 stage "code compile"{
 withMaven(maven: 'MyMaven') {
 }sh 'mvn compile'
+}
 }
 }
