@@ -23,7 +23,7 @@ stage ('Test Stage') {
 Steps{
 
 withMaven(maven: 'MyMaven') {
-sh 'mvn Test')
+sh 'mvn Test'}
 }
 }
 }
@@ -32,7 +32,7 @@ stage ('Install Stage') {
 Steps{
 
 withMaven(maven: 'MyMaven') {
-sh 'mvn Install')
+sh 'mvn Install'}
 }
 }
 }
