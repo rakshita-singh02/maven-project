@@ -35,5 +35,4 @@ withMaven(maven: 'MyMaven') {
 sh 'mvn Install'}
 }
 }
-}
-}
+
