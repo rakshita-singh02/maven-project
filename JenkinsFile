@@ -7,10 +7,14 @@ pipeline {
 stage ("SCM Checkout") {
 git 'https://github.com/Akshaydwagh/maven-project'
 }
+}
+stage ('compile stage') {
 
-stage ("code compile") {
+steps{
+
 withMaven(maven: 'MyMaven') {
-}sh 'mvn compile'
+sh 'mvn compile'}
+}
 }
 }
 }
