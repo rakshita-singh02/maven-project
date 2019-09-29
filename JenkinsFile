@@ -1,0 +1,12 @@
+pipeline {
+     agent any
+
+stage "SCM Checkout"{
+git 'https://github.com/Akshaydwagh/maven-project'
+}
+
+stage "code test"{
+withMaven(maven: 'MyMaven') {
+}sh 'mvn test'
+}
+}
