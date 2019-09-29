@@ -19,7 +19,7 @@ sh 'mvn compile'}
 }
 }
 {
-stage ('Test Stage') {
+stage ('test Stage') {
 
 Steps{
 
@@ -27,8 +27,9 @@ withMaven(maven: 'MyMaven') {
 sh 'mvn test'}
 }
 }
+}
 {
-stage ('Install Stage') {
+stage ('install Stage') {
 
 Steps{
 
@@ -38,7 +39,3 @@ sh 'mvn install'}
 }
 }
 }
-}
-
-
-
