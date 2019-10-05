@@ -46,7 +46,7 @@ sh 'mvn clean test'}
 }
 }
 {
-stage ( 'Package Stage) {
+stage ( 'Package Stage') {
 steps {
 
 withMaven(maven: 'MyMaven') {
