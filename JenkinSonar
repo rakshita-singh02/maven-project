@@ -1,1 +1,71 @@
+pipeline {
+
+     agent any
+
+     
+
+ stages
+
+ {
+
+stage ('SCM Checkout') {
+
+git 'https://github.com/Akshaydwagh/maven-project'
+
+}
+
+}
+
+{
+
+stage ('compile stage') {
+
+
+
+steps{
+
+
+
+withMaven(maven: 'MyMaven') {
+
+sh 'mvn compile'}
+
+}
+
+}
+
+}
+{
+stage ( 'Test Stage')
+{
+steps {
+
+withMaven(maven: 'MyMaven') {
+sh 'mvn clean test'}
+}
+}
+}
+{
+stage ( 'Package Stage) {
+steps {
+
+withMaven(maven: 'MyMaven') {
+
+sh 'mvn package'}
+}
+}
+}
+{
+stage ('build and SonarQubeinstall stage')
+{
+steps {
+
+withSonarQubeEnv('sonar') {
+withMaven(maven : 'MyMaven') {
+sh 'mvn clean install sonar:sonar}
+}
+}
+}
+}
+}
 
