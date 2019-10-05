@@ -60,7 +60,7 @@ stage ('build and SonarQubeinstall stage')
 {
 steps {
 
-withSonarQubeEnv('sonar') {
+withSonarQubeEnv('SonarQube') {
 withMaven(maven : 'MyMaven') {
 sh 'mvn clean install sonar:sonar'}
 }
