@@ -17,7 +17,17 @@ sh label: '', script: 'mvn clean package'
 stage('build docker image'){
 sh 'docker build -t akshaywagh/tiger1:1.0.0 .'
 }
+stage('Push docker image'){
+withCredentials([string(credentialsId: 'docker-pwd', variable: 'DokcerHubs')]) {
+sh "docker login -u akshaywagh -p ${DokcerHubs}"
 }
+sh 'docker push akshaywagh/tiger1:1.0.0'
+}
+}
+
+
+
+
 
 
 
