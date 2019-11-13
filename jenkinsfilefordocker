@@ -15,7 +15,7 @@ sh label: '', script: 'mvn clean package'
 }
 
 stage('build docker image'){
-sh 'docker build -t akshaywagh/tig:1.0.0 .'
+sh 'docker build -t akshaywagh/tiger:1.0.0 .'
 }
 }
 
