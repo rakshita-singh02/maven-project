@@ -23,15 +23,14 @@ sh "docker login -u akshaywagh -p ${DokcerHubs}"
 }
 sh 'docker push akshaywagh/tiger1:1.0.0'
 }
+
+stage('Run container on Dev server'){
+def dockerRun = 'docker run -p 1456:8080 -d akshaywagh/tiger1:1.0.0'
+sshagent(['DEV-server']) {
+sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.36.133 ${dockerRun}"
+  }
+
 }
-
-
-
-
-
-
-
-
-
+}
 
 
