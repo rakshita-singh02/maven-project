@@ -1,1 +1,23 @@
-hi
+node{
+
+stage('scm checkout') {
+git 'https://github.com/Akshaydwagh/maven-project.git'
+}
+
+stage('checkout to different branch') {
+sh "git branch -r"
+sh "git checkout master"
+
+}
+
+stage('package stage'){
+sh label: '', script: 'mvn clean package'
+}
+
+stage('build docker image'){
+sh 'docker push akshaywagh/akshay-app:1.0.0'
+}
+}
+
+
+
