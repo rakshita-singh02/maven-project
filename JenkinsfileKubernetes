@@ -21,7 +21,7 @@ stage('push docker image') {
 withCredentials([string(credentialsId: 'docker-pwd', variable: 'DOCKERPWD')]) {
 sh "docker login -u akshaywagh -p ${DOCKERPWD}"
 }
-sh 'docker push akshaywagh/ADW:1.0.0'
+sh 'docker push akshaywagh/adw:1.0.0'
 }
 
 stage('deploy to k8s cluster') {
