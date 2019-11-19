@@ -1,0 +1,38 @@
+node{
+
+stage('scm checkout') {
+git 'https://github.com/Akshaydwagh/spring-boot-mongo-docker'
+}
+
+stage('checkout to different branch') {
+sh "git branch -r"
+sh "git checkout master"
+}
+
+stage ('build maven') {
+sh label: '', script: 'mvn clean package'
+}
+
+stage('build docker image'){
+sh 'docker build -t akshaywagh/adw:1.0.0 .'
+}
+
+stage('push docker image') {
+withCredentials([string(credentialsId: 'docker-pwd', variable: 'DOCKERPWD')]) {
+sh "docker login -u akshaywagh -p ${DOCKERPWD}"
+}
+sh 'docker push akshaywagh/ADW:1.0.0'
+}
+
+stage('deploy to k8s cluster') {
+kubernetesDeploy(
+configs: 'springBootMongo.yml',
+kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
+enableConfigSubstitution: true
+
+        )
+
+     }
+	 }
+
+
