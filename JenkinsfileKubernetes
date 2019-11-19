@@ -1,7 +1,7 @@
 node{
 
 stage('scm checkout') {
-git 'https://github.com/Akshaydwagh/spring-boot-mongo-docker'
+git 'https://github.com/Akshaydwagh/maven-project'
 }
 
 stage('checkout to different branch') {
