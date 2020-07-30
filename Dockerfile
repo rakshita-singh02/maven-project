@@ -1,2 +1,2 @@
-FROM consol/tomcat-7.0
+FROM tomcat:6
 COPY /webapp/target/*.war /usr/local/tomcat/webapps/
